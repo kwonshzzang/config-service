@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: 8888 # 컨피그 서비스 애플리케이션이 듣는 포트
   tomcat:
     connection-timeout: 2s
     keep-alive-timeout: 15s
@@ -10,15 +10,15 @@ server:
 
 spring:
   application:
-    name: config-service
+    name: config-service # 현재 애플리케이션의 이름
   lifecycle:
     timeout-per-shutdown-phase: 15s  # 15초의 종료 기간을 둔다.
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/kwonshzzang/config-repo.git
-          default-label: main
-          timeout: 5
-          clone-on-start: true
-          force-pull: true
+          uri: https://github.com/kwonshzzang/config-repo.git # 설정 데이터 저장 백앤드로 사용할 원격 깃 저장소의 URL
+          default-label: main # 서버는 이 설정에 따라 기본적으로 main 브랜치에서 설정 데이터를 반환한다.
+          timeout: 5 # 원격 저장소와의 연결시 시간 한도
+          clone-on-start: true # 서비스 시작시 리모트 저장소의 복제본을 로컬에 저장
+          force-pull: true # 로컬 저장본이 원격 저장소와 다를 경우 무조건 원격 저장소로부터 다운로드
